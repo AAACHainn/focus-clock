@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>专注时钟</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-96">
+        <h1 class="text-3xl font-bold text-center mb-6 text-gray-800">专注时钟</h1>
+        
+        <div class="space-y-6">
+            <!-- 时间设置 -->
+            <div class="flex flex-col space-y-2">
+                <label class="text-gray-700">专注时长（分钟）</label>
+                <input type="range" id="duration" min="1" max="90" value="25" 
+                    class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                <div class="text-center text-gray-600">
+                    <span id="durationValue">25</span> 分钟
+                </div>
+            </div>
+
+            <!-- 提示音间隔设置 -->
+            <div class="flex flex-col space-y-2">
+                <label class="text-gray-700">提示音间隔（分钟）</label>
+                <div class="flex space-x-4">
+                    <input type="number" id="minInterval" min="1" max="30" value="3" 
+                        class="w-20 p-2 border rounded">
+                    <span class="self-center">至</span>
+                    <input type="number" id="maxInterval" min="1" max="30" value="5" 
+                        class="w-20 p-2 border rounded">
+                </div>
+            </div>
+            
+            <!-- 音量控制 -->
+            <div class="flex flex-col space-y-2">
+                <label class="text-gray-700">提示音音量</label>
+                <input type="range" id="volumeControl" min="0" max="100" value="30" 
+                    class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                <div class="text-center text-gray-600">
+                    <span id="volumeValue">30</span>%
+                </div>
+            </div>
+
+            <!-- 计时器显示 -->
+            <div class="text-center">
+                <div id="timer" class="text-5xl font-bold text-gray-800">25:00</div>
+            </div>
+
+            <!-- 控制按钮 -->
+            <div class="flex justify-center space-x-4">
+                <button id="startBtn" class="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition">
+                    开始
+                </button>
+                <button id="pauseBtn" class="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition hidden">
+                    暂停
+                </button>
+                <button id="resetBtn" class="bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600 transition">
+                    重置
+                </button>
+            </div>
+
+            <!-- 休息提示 -->
+            <div id="restAlert" class="hidden text-center p-4 bg-blue-100 text-blue-800 rounded-lg">
+                请闭目休息10秒钟
+            </div>
+            
+            <!-- 调试信息 -->
+            <div class="text-center text-sm text-gray-500">
+                <p>距下次提示音: <span id="nextAlertDisplay"></span></p>
+                <button id="testSoundBtn" class="mt-2 px-3 py-1 bg-gray-200 rounded text-xs">测试声音</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
